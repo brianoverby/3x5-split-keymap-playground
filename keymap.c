@@ -17,6 +17,25 @@ enum keymap_custom_keycodes {
   NEW_SAFE_RANGE
 };
 
+// Define combos
+enum {
+  QW_TAB,
+  AS_ESC,
+  OP_BSP,
+  COMBO_LENGTH
+};
+uint16_t COMBO_LEN = COMBO_LENGTH;
+
+const uint16_t PROGMEM qw_combo[] = {DK_Q, DK_W, COMBO_END};
+const uint16_t PROGMEM as_combo[] = {DK_A, DK_S, COMBO_END};
+const uint16_t PROGMEM op_combo[] = {DK_O, DK_P, COMBO_END};
+
+combo_t key_combos[] {
+  [QW_TAB] = COMBO(qw_combo, KC_TAB),
+  [AS_ESC] = COMBO(as_combo, KC_ESC),
+  [OP_BSP] = COMBO(op_combo, KC_BSPC)
+};
+
 // Define mod keys
 #define SYM MO(_SYM)
 #define NUM MO(_NUM)
@@ -57,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DK_EXLM, DK_AT,   DK_HASH, DK_DLR,  DK_PERC, XXXXXXX, XXXXXXX, DK_TILD, DK_DIAE, DK_LPRN, DK_RPRN, DK_COLN,
         DK_CIRC, DK_AMPR, DK_UNDS, DK_BSLS, DK_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, DK_QUES, DK_LCBR, DK_RCBR, DK_SCLN,
         DK_PLUS, DK_MINS, DK_ASTR, DK_SLSH, DK_EQL,  XXXXXXX, XXXXXXX, DK_GRV,  DK_ACUT, DK_LBRC, DK_RBRC, _______,
-        XXXXXXX, XXXXXXX, _______, _______, KC_LCTL, XXXXXXX, XXXXXXX, _______, FUN,     _______, XXXXXXX, XXXXXXX
+        XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, _______, FUN,     _______, XXXXXXX, XXXXXXX
     ),
 
     [_NUM] = LAYOUT_ortho_4x12(
