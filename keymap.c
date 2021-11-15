@@ -30,7 +30,7 @@ const uint16_t PROGMEM qw_combo[] = {DK_Q, DK_W, COMBO_END};
 const uint16_t PROGMEM as_combo[] = {DK_A, DK_S, COMBO_END};
 const uint16_t PROGMEM op_combo[] = {DK_O, DK_P, COMBO_END};
 
-combo_t key_combos[] {
+combo_t key_combos[] = {
   [QW_TAB] = COMBO(qw_combo, KC_TAB),
   [AS_ESC] = COMBO(as_combo, KC_ESC),
   [OP_BSP] = COMBO(op_combo, KC_BSPC)
