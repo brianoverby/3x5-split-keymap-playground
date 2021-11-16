@@ -17,6 +17,8 @@ enum keymap_custom_keycodes {
   NEW_SAFE_RANGE
 };
 
+
+
 // Define combos
 enum {
   QW_TAB,
@@ -35,6 +37,8 @@ combo_t key_combos[] = {
   [AS_ESC] = COMBO(as_combo, KC_ESC),
   [OP_BSP] = COMBO(op_combo, KC_BSPC)
 };
+
+
 
 // Define mod keys
 #define SYM MO(_SYM)
@@ -89,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FUN] = LAYOUT_ortho_4x12(
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, RESET,   KC_VOLU, KC_INS,  XXXXXXX, KC_PSCR,
         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD, XXXXXXX, XXXXXXX, XXXXXXX,
-        KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MAC_TOG, DK_AE,   DK_OSTR, DK_ARNG,
+        KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MAC_TOG, XXXXXXX, DK_AE,   DK_OSTR, DK_ARNG,
         XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX 
     ),
 
