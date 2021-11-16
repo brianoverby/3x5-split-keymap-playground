@@ -18,33 +18,15 @@ enum keymap_custom_keycodes {
 };
 
 
-
-// Define combos
-enum {
-  QW_TAB,
-  AS_ESC,
-  OP_BSP,
-  COMBO_LENGTH
-};
-uint16_t COMBO_LEN = COMBO_LENGTH;
-
-const uint16_t PROGMEM qw_combo[] = {DK_Q, DK_W, COMBO_END};
-const uint16_t PROGMEM as_combo[] = {DK_A, DK_S, COMBO_END};
-const uint16_t PROGMEM op_combo[] = {DK_O, DK_P, COMBO_END};
-
-combo_t key_combos[] = {
-  [QW_TAB] = COMBO(qw_combo, KC_TAB),
-  [AS_ESC] = COMBO(as_combo, KC_ESC),
-  [OP_BSP] = COMBO(op_combo, KC_BSPC)
-};
-
-
-
 // Define mod keys
 #define SYM MO(_SYM)
-#define NUM MO(_NUM)
-#define FUN MO(_FUN)
-#define ENT_CTL LCTL_T(KC_ENT)
+#define BSP_NUM LT(_NUM,KC_BSPC)
+#define ENT_SFT SFT_T(KC_ENT)
+#define TAB_CTL LCTL_T(KC_TAB)
+#define ESC_OPT OPT_T(KC_ESC)
+#define Z_SFT SFT_T(DK_Z)
+#define PLS_SFT SFT_T(DK_PLUS)
+#define F11_SFT SFT_T(KC_F11)
 
 
 // User config 
@@ -72,28 +54,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_ortho_4x12(
         DK_Q,    DK_W,    DK_E,    DK_R,    DK_T,    XXXXXXX, XXXXXXX, DK_Y,    DK_U,    DK_I,    DK_O,    DK_P,
         DK_A,    DK_S,    DK_D,    DK_F,    DK_G,    XXXXXXX, XXXXXXX, DK_H,    DK_J,    DK_K,    DK_L,    DK_QUOT,
-        DK_Z,    DK_X,    DK_C,    DK_V,    DK_B,    XXXXXXX, XXXXXXX, DK_N,    DK_M,    KC_COMM, KC_DOT,  ENT_CTL,
-        XXXXXXX, XXXXXXX, KC_LGUI, SYM,     KC_LSFT, XXXXXXX, XXXXXXX, KC_SPC,  NUM,     KC_LALT, XXXXXXX, XXXXXXX
+        Z_SFT,   DK_X,    DK_C,    DK_V,    DK_B,    XXXXXXX, XXXXXXX, DK_N,    DK_M,    KC_COMM, KC_DOT,  ENT_SFT,
+        XXXXXXX, XXXXXXX, ESC_OPT, KC_LCMD, TAB_CTL, XXXXXXX, XXXXXXX, KC_SPC,  SYM,     BSP_NUM, XXXXXXX, XXXXXXX
     ),
 
     [_SYM] = LAYOUT_ortho_4x12(
         DK_EXLM, DK_AT,   DK_HASH, DK_DLR,  DK_PERC, XXXXXXX, XXXXXXX, DK_TILD, DK_DIAE, DK_LPRN, DK_RPRN, DK_COLN,
         DK_CIRC, DK_AMPR, DK_UNDS, DK_BSLS, DK_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, DK_QUES, DK_LCBR, DK_RCBR, DK_SCLN,
-        DK_PLUS, DK_MINS, DK_ASTR, DK_SLSH, DK_EQL,  XXXXXXX, XXXXXXX, DK_GRV,  DK_ACUT, DK_LBRC, DK_RBRC, _______,
-        XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, _______, FUN,     _______, XXXXXXX, XXXXXXX
+        PLS_SFT, DK_MINS, DK_ASTR, DK_SLSH, DK_EQL,  XXXXXXX, XXXXXXX, DK_GRV,  DK_ACUT, DK_LBRC, DK_RBRC, _______,
+        XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX
     ),
 
     [_NUM] = LAYOUT_ortho_4x12(
-        DK_1,    DK_2,    DK_3,    DK_4,    DK_5,    XXXXXXX, XXXXXXX, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_BSPC,
-        DK_6,    DK_7,    DK_8,    DK_9,    DK_0,    XXXXXXX, XXXXXXX, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,
-        DK_PLUS, DK_MINS, DK_ASTR, DK_SLSH, DK_EQL,  XXXXXXX, XXXXXXX, KC_ESC,  XXXXXXX, KC_COMM, KC_DOT,  _______,
+        DK_1,    DK_2,    DK_3,    DK_4,    DK_5,    XXXXXXX, XXXXXXX, KC_PGUP, KC_HOME, KC_UP,   KC_END,  XXXXXXX,
+        DK_6,    DK_7,    DK_8,    DK_9,    DK_0,    XXXXXXX, XXXXXXX, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
+        PLS_SFT, DK_MINS, DK_ASTR, DK_SLSH, DK_EQL,  XXXXXXX, XXXXXXX, KC_ESC,  XXXXXXX, KC_COMM, KC_DOT,  _______,
         XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX
     ),
 
     [_FUN] = LAYOUT_ortho_4x12(
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, RESET,   KC_VOLU, KC_INS,  XXXXXXX, KC_PSCR,
         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD, XXXXXXX, XXXXXXX, XXXXXXX,
-        KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MAC_TOG, XXXXXXX, DK_AE,   DK_OSTR, DK_ARNG,
+        F11_SFT, KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MAC_TOG, XXXXXXX, DK_AE,   DK_OSTR, DK_ARNG,
         XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX 
     ),
 
@@ -125,9 +107,9 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 
 // SYSTEM layer activation
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//   return update_tri_layer_state(state, _SYM, _NUM, _DK);
-// }
+layer_state_t layer_state_set_user(layer_state_t state) {
+   return update_tri_layer_state(state, _SYM, _NUM, _FUN);
+ }
 
 // Process custom keycodes
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
