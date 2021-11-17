@@ -21,6 +21,7 @@ enum keymap_custom_keycodes {
 // Define mod keys
 #define SYM MO(_SYM)
 #define BSP_NUM LT(_NUM,KC_BSPC)
+#define Q_DK LT(_DK,DK_Q)
 #define ENT_SFT SFT_T(KC_ENT)
 #define TAB_CTL LCTL_T(KC_TAB)
 #define ESC_OPT OPT_T(KC_ESC)
@@ -45,14 +46,14 @@ void keyboard_post_init_user(void) {
 };
 
 
-// For Win key toggle
+// For Win key toggle - no need to save this in EEPROM
 bool win_key_enabled = true;
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_BASE] = LAYOUT_ortho_4x12(
-        DK_Q,    DK_W,    DK_E,    DK_R,    DK_T,    XXXXXXX, XXXXXXX, DK_Y,    DK_U,    DK_I,    DK_O,    DK_P,
+        Q_DK,    DK_W,    DK_E,    DK_R,    DK_T,    XXXXXXX, XXXXXXX, DK_Y,    DK_U,    DK_I,    DK_O,    DK_P,
         DK_A,    DK_S,    DK_D,    DK_F,    DK_G,    XXXXXXX, XXXXXXX, DK_H,    DK_J,    DK_K,    DK_L,    DK_QUOT,
         Z_SFT,   DK_X,    DK_C,    DK_V,    DK_B,    XXXXXXX, XXXXXXX, DK_N,    DK_M,    KC_COMM, KC_DOT,  ENT_SFT,
         XXXXXXX, XXXXXXX, ESC_OPT, KC_LCMD, TAB_CTL, XXXXXXX, XXXXXXX, KC_SPC,  SYM,     BSP_NUM, XXXXXXX, XXXXXXX
@@ -66,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_NUM] = LAYOUT_ortho_4x12(
-        DK_1,    DK_2,    DK_3,    DK_4,    DK_5,    XXXXXXX, XXXXXXX, KC_PGUP, KC_HOME, KC_UP,   KC_END,  XXXXXXX,
+        DK_1,    DK_2,    DK_3,    DK_4,    DK_5,    XXXXXXX, XXXXXXX, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_DEL,
         DK_6,    DK_7,    DK_8,    DK_9,    DK_0,    XXXXXXX, XXXXXXX, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
         PLS_SFT, DK_MINS, DK_ASTR, DK_SLSH, DK_EQL,  XXXXXXX, XXXXXXX, KC_ESC,  XXXXXXX, KC_COMM, KC_DOT,  _______,
         XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX
@@ -75,15 +76,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FUN] = LAYOUT_ortho_4x12(
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, RESET,   KC_VOLU, KC_INS,  XXXXXXX, KC_PSCR,
         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD, XXXXXXX, XXXXXXX, XXXXXXX,
-        F11_SFT, KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MAC_TOG, XXXXXXX, DK_AE,   DK_OSTR, DK_ARNG,
+        F11_SFT, KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MAC_TOG, XXXXXXX, XXXXXXX, XXXXXXX, _______,
         XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX 
     ),
 
     [_DK] = LAYOUT_ortho_4x12(
-        XXXXXXX, XXXXXXX, WIN_TOG, XXXXXXX, RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_MOD, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MAC_TOG, XXXXXXX, DK_AE,   DK_OSTR, DK_ARNG,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+        _______, XXXXXXX, WIN_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MAC_TOG, XXXXXXX, DK_AE,   DK_OSTR, DK_ARNG,
+        XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX
     )
 };
 
